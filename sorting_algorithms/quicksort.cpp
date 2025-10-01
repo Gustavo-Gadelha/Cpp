@@ -12,20 +12,18 @@ void swap(int &a, int &b) {
 
 int partition(int arr[], int left, int right) {	
 	int pivot = arr[right];
-	int last_unsorted = left;
+	int i = left - 1;
 	
-	for (int j = left; j < right; ++j) {	
-		if (arr[j] < pivot) {
-			swap(arr[last_unsorted], arr[j]);
-			last_unsorted++;
+	for (int j = left; j <= right - 1; ++j) {	
+		if (arr[j] <= pivot) {
+			i++;
+			swap(arr[i], arr[j]);
 		}
 	}
 	
-	if (last_unsorted != right) {
-		swap(arr[last_unsorted], arr[right]);	
-	}
+	swap(arr[i + 1], arr[right]);	
 	
-	return last_unsorted;
+	return i + 1;
 	
 }
 
