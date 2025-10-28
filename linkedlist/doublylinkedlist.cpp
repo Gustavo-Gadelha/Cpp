@@ -1,5 +1,4 @@
 #include <iostream>
-
 using namespace std;
 
 struct Node {
@@ -15,7 +14,12 @@ struct LinkedList {
     Node* node = new Node;
     node->data = data;
 
-    if (head == nullptr || position < 1) {
+    if (head == nullptr) {
+      head = node;
+      return;
+    }
+
+    if (position == 0) {
       node->next = head;
       head->prev = node;
       head = node;
@@ -39,7 +43,7 @@ struct LinkedList {
     current->next = node;
   }
 
-  void append(int& data) {
+  void append(int data) {
     Node* node = new Node;
     node->data = data;
 
@@ -59,13 +63,11 @@ struct LinkedList {
 
   int size() {
     int counter = 0;
-
     Node* node = head;
     while (node) {
-      counter++;
+      ++counter;
       node = node->next;
     }
-
     return counter;
   }
 };
@@ -88,6 +90,5 @@ int main() {
   }
 
   cout << "Size of list: " << list.size() << endl;
-
   return 0;
 }
