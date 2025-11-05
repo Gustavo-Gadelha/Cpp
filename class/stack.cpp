@@ -52,6 +52,8 @@ struct Stack {
   }
 
   void show() {
+
+    
     Node* current = top;
 
     cout << "| ";
