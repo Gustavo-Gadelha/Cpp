@@ -43,7 +43,7 @@ struct Tree {
 
 int main() {
   Node* root = new Node{1, nullptr, nullptr};
-  
+
   root->left = new Node{2, nullptr, nullptr};
   root->left->left = new Node{4, nullptr, nullptr};
   root->left->right = new Node{5, nullptr, nullptr};
