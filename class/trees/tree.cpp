@@ -8,20 +8,6 @@ struct Node {
   Node* right = nullptr;
 
   bool is_leaf() { return (left == nullptr && right == nullptr); }
-
-  void left_is(int data) {
-    if (left != nullptr) {
-      exit(1);
-    }
-    left = new Node{data, nullptr, nullptr};
-  }
-
-  void right_is(int data) {
-    if (right != nullptr) {
-      exit(1);
-    }
-    right = new Node{data, nullptr, nullptr};
-  }
 };
 
 struct Tree {
@@ -57,12 +43,14 @@ struct Tree {
 
 int main() {
   Node* root = new Node{1, nullptr, nullptr};
-  root->left_is(2);
-  root->left->left_is(4);
-  root->left->right_is(5);
-  root->right_is(3);
-  root->right->left_is(6);
-  root->right->right_is(7);
+  
+  root->left = new Node{2, nullptr, nullptr};
+  root->left->left = new Node{4, nullptr, nullptr};
+  root->left->right = new Node{5, nullptr, nullptr};
+
+  root->right = new Node{3, nullptr, nullptr};
+  root->right->left = new Node{6, nullptr, nullptr};
+  root->right->right = new Node{7, nullptr, nullptr};
 
   Tree tree;
   tree.root = root;
