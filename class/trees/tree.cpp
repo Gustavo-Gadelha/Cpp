@@ -18,7 +18,7 @@ struct Tree {
       return;
 
     inorder(root->left);
-    cout << "Data: " << root->data << endl;
+    cout << root->data << " | ";
     inorder(root->right);
   }
 
@@ -26,7 +26,7 @@ struct Tree {
     if (root == nullptr)
       return;
 
-    cout << "Data: " << root->data << endl;
+    cout << root->data << " | ";
     preorder(root->left);
     preorder(root->right);
   }
@@ -37,20 +37,28 @@ struct Tree {
 
     postorder(root->left);
     postorder(root->right);
-    cout << "Data: " << root->data << endl;
+    cout << root->data << " | ";
   }
 };
 
 int main() {
-  Node* root = new Node{1, nullptr, nullptr};
+  Node* n9 = new Node{9, nullptr, nullptr};
+  n9->left = new Node{4, nullptr, nullptr};
 
-  root->left = new Node{2, nullptr, nullptr};
-  root->left->left = new Node{4, nullptr, nullptr};
-  root->left->right = new Node{5, nullptr, nullptr};
+  Node* n5 = new Node{5, nullptr, nullptr};
+  n5->right = n9;
 
-  root->right = new Node{3, nullptr, nullptr};
-  root->right->left = new Node{6, nullptr, nullptr};
-  root->right->right = new Node{7, nullptr, nullptr};
+  Node* n6 = new Node{6, nullptr, nullptr};
+  n6->left = new Node{5, nullptr, nullptr};
+  n6->right = new Node{11, nullptr, nullptr};
+
+  Node* n7 = new Node{7, nullptr, nullptr};
+  n7->left = new Node{2, nullptr, nullptr};
+  n7->right = n6;
+
+  Node* root = new Node{2, nullptr, nullptr};
+  root->left = n7;
+  root->right = n5;
 
   Tree tree;
   tree.root = root;
